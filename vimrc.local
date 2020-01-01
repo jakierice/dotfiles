@@ -1,0 +1,30 @@
+" This file contains personal (local) overrides for thoughtbots default
+" dotfiles configuration config: https://github.com/thoughtbot/dotfiles
+
+" quick `roll` ESC
+imap kj <Esc>
+imap jk <Esc>
+vmap kj <Esc>
+vmap jk <Esc>
+
+" override thoughtbot's 80 column width marker
+set colorcolumn=
+
+" line number relative to current cursor position
+set relativenumber
+
+" searching with :Files command and other file related commands should
+" be done from the current working file's location context
+set autochdir
+
+" jump to beginning of line text instead of actual line begin
+nmap 0 ^
+
+" move down/up single line if line is wrapped
+nmap k gk
+nmap j gj
+
+" set colors for night-owl theme
+if (has("termguicolors"))
+   set termguicolors
+endif

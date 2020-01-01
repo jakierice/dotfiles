@@ -1,0 +1,7 @@
+Plug 'mxw/vim-jsx'
+" git tools like Gblame and Gbrowse https://github.com/tpope/vim-fugitive
+Plug 'tpope/vim-fugitive'
+" Bitbucket plugin for better vim-fugitive Gbrowse support
+Plug 'tommcdo/vim-fubitive'
+Plug 'tpope/vim-surround'
+Plug 'haishanh/night-owl.vim'
