@@ -1,7 +1,23 @@
-Plug 'mxw/vim-jsx'
+" Plug 'mxw/vim-jsx'
+Plug 'MaxMEllon/vim-jsx-pretty'
 " git tools like Gblame and Gbrowse https://github.com/tpope/vim-fugitive
 Plug 'tpope/vim-fugitive'
 " Bitbucket plugin for better vim-fugitive Gbrowse support
 Plug 'tommcdo/vim-fubitive'
+Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'tpope/vim-surround'
 Plug 'haishanh/night-owl.vim'
+Plug 'joshdick/onedark.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'mileszs/ack.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'Yggdroot/indentLine'
+Plug 'leafgarland/typescript-vim'
+Plug 'Valloric/MatchTagAlways'
+Plug 'alvan/vim-closetag'
+
+" post install (yarn install | npm install) then load plugin only for editing
+" supported files
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }

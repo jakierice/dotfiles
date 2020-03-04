@@ -98,6 +98,8 @@ source $ZSH/oh-my-zsh.sh
 alias zshconfig="vim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias home="cd ~"
+alias y10="tmux resize-pane -y 10"
+alias x110="tmux resize-pane -x 110"
 
 # start z fuzzy finder on zsh load
 . ~/.config/z.sh

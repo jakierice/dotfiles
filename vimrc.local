@@ -24,7 +24,141 @@ nmap 0 ^
 nmap k gk
 nmap j gj
 
-" set colors for night-owl theme
-if (has("termguicolors"))
-   set termguicolors
+" set filetypes as typescript.tsx
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+
+""""""""""""" Color Schemes  """"""""""""""""""
+set termguicolors
+colorscheme onedark
+
+" set ag (the silver surfer) as ack.vim search library
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
 endif
+
+" markdown preview hotkey
+let vim_markdown_preview_hotkey='<C-q>'
+" default chrome for markdown preview
+let vim_markdown_preview_browser='Google Chrome'
+" use grip for GitHub style markdown preview
+let vim_markdown_preview_github=1
+
+" sets each level of indentation to different line type
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+"""""""" Vim lightline   """""
+
+let g:lightline = {
+    \ 'colorscheme': 'oneNeon_lightline',
+    \ 'mode_map': { 'c': 'NORMAL'  },
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste'  ], [ 'filename'  ]  ]
+    \ }, 
+    \ 'component_function': {
+    \   'modified': 'LightlineModified',
+    \   'readonly': 'LightlineReadonly',
+    \   'filename': 'LightlineFilename',
+    \   'fileformat': 'LightlineFileformat',
+    \   'filetype': 'LightlineFiletype',
+    \   'fileencoding': 'LightlineFileencoding',
+    \   'mode': 'LightlineMode',
+    \ }, 
+    \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2"  },
+    \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3"  }
+    \ }
+
+function! LightlineModified()
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! LightlineReadonly()
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '♤ ' : ''
+endfunction
+
+function! LightlineFilename()
+  return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+        \ ('' != expand('%:f') ? expand('%:f') : '[New File]') .
+        \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
+endfunction
+
+" NORMAL / INSERT / VISUAL
+function! LightlineMode()
+  return winwidth(0) > 40 ? lightline#mode() : ''
+endfunction
+
+" javascript.jsx
+function! LightlineFiletype()
+  return winwidth(0) > 100 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
+
+"   " utf-8
+function! LightlineFileencoding()
+  return winwidth(0) > 80 ? (&fenc !=# '' ? &fenc : &enc) : ''
+endfunction
+
+"" unix
+function! LightlineFileformat()
+  return winwidth(0) > 120 ? &fileformat : ''
+endfunction
+
+let g:lightline.enable = {
+  \   'tabline': 1
+  \ }
+
+function! ResizeCmdHeight()
+  if &columns < 90
+    set cmdheight=2
+  else
+    set cmdheight=1
+  endif
+endfunction
+
+augroup ResizeCmdOnVimResized
+  autocmd!
+  autocmd VimResized * call ResizeCmdHeight()
+augroup END
+
+" auto close tags for HTML and JSX/TSX
+" filenames like *.xml, *.html, *.xhtml, ...
+" These are the file extensions where this plugin is enabled.
+"
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
+
+" filenames like *.xml, *.xhtml, ...
+" This will make the list of non-closing tags self-closing in the specified files.
+"
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js,*.tsx'
+
+" filetypes like xml, html, xhtml, ...
+" These are the file types where this plugin is enabled.
+"
+let g:closetag_filetypes = 'html,xhtml,phtml'
+
+" filetypes like xml, xhtml, ...
+" This will make the list of non-closing tags self-closing in the specified files.
+"
+let g:closetag_xhtml_filetypes = 'xhtml,jsx,js,tsx'
+
+" integer value [0|1]
+" This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
+"
+let g:closetag_emptyTags_caseSensitive = 1
+
+" dict
+" Disables auto-close if not in a "valid" region (based on filetype)
+"
+let g:closetag_regions = {
+    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+    \ 'javascript.jsx': 'jsxRegion',
+    \ }
+
+" Shortcut for closing tags, default is '>'
+"
+let g:closetag_shortcut = '>'
+
+" Add > at current position without closing the current tag, default is ''
+"
+let g:closetag_close_shortcut = '<leader>>'
+
+autocmd BufNewFile,BufRead *.js set filetype=javascript.jsx
+autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
