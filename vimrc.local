@@ -30,7 +30,10 @@ autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 """"""""""""" Color Schemes  """"""""""""""""""
 set termguicolors
 colorscheme onedark
+" colorscheme pt_black
 
+" remove theme background to use terminal theme background color
+highlight Normal ctermbg=None
 " set ag (the silver surfer) as ack.vim search library
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
@@ -49,7 +52,7 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 """""""" Vim lightline   """""
 
 let g:lightline = {
-    \ 'colorscheme': 'oneNeon_lightline',
+    \ 'colorscheme': 'powerline',
     \ 'mode_map': { 'c': 'NORMAL'  },
     \ 'active': {
     \   'left': [ [ 'mode', 'paste'  ], [ 'filename'  ]  ]
