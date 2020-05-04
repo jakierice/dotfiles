@@ -10,3 +10,7 @@ bind-key -n C-l select-pane -R
 
 # refresh tmux session config source and success message
 bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
+
+# set true color for tmux sessions
+set -g default-terminal "xterm-256color"
+set -ga terminal-overrides ",*256col*:Tc"

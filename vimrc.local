@@ -56,7 +56,7 @@ let g:lightline = {
     \ 'mode_map': { 'c': 'NORMAL'  },
     \ 'active': {
     \   'left': [ [ 'mode', 'paste'  ], [ 'filename'  ]  ]
-    \ }, 
+    \ },
     \ 'component_function': {
     \   'modified': 'LightlineModified',
     \   'readonly': 'LightlineReadonly',
@@ -65,7 +65,7 @@ let g:lightline = {
     \   'filetype': 'LightlineFiletype',
     \   'fileencoding': 'LightlineFileencoding',
     \   'mode': 'LightlineMode',
-    \ }, 
+    \ },
     \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2"  },
     \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3"  }
     \ }
