@@ -61,7 +61,7 @@ zle -N zle-keymap-select
 zle -N zle-line-init
 
 # start z fuzzy finder on zsh load
-. ~/.config/z.sh
+. ~/dotfiles-local/z.sh
 
 export PATH=~/.npm-global/bin:$PATH
 
