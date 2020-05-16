@@ -35,6 +35,8 @@ alias y20="tmux resize-pane -y 20"
 alias y30="tmux resize-pane -y 30"
 alias y40="tmux resize-pane -y 40"
 alias x110="tmux resize-pane -x 110"
+# assign custom key mappings for linux
+alias map-keys="xmodmap ~/dotfiles-local/.Xmodmap"
 # remove tap to click on linux
 alias remove-tap-click="synclient MaxTapTime=0"
 

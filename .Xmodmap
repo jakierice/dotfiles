@@ -1,0 +1,6 @@
+keycode 108 = Alt_R Meta_R Alt_R Meta_R
+keycode 108 = Mode_switch
+keysym a = a A Left
+keysym d = d D Right
+keysym s = s S Down
+keysym w = w W Up
