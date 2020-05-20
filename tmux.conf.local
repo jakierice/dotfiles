@@ -8,6 +8,8 @@ bind-key -n C-j select-pane -D
 bind-key -n C-k select-pane -U
 bind-key -n C-l select-pane -R
 
+set-option -g default-shell /bin/zsh
+
 # refresh tmux session config source and success message
 bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
 
