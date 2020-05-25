@@ -69,19 +69,17 @@
 #               prepend '\' at the end of the previous line.
 #
 #               an EOL character signifies the end of the bind.
-
-# ############################################################### #
-# THE FOLLOWING SECTION CONTAIN SIMPLE MAPPINGS DEMONSTRATING HOW #
-# TO INTERACT WITH THE YABAI WM. THESE ARE SUPPOSED TO BE USED AS #
-# A REFERENCE ONLY, WHEN MAKING YOUR OWN CONFIGURATION..          #
-# ############################################################### #
+#
 :: default : yabai -m config top_padding 5 && yabai -m config bottom_padding 5 && yabai -m config left_padding 5 && yabai -m config right_padding 5 && yabai -m config window_gap 5
 
 :: swap @ : yabai -m config top_padding    20 && yabai -m config bottom_padding 20 && yabai -m config left_padding   20 && yabai -m config right_padding  20 && yabai -m config window_gap     20
 
+# enter swap mode (used for moving window positions)
 shift + cmd + alt + ctrl - g; swap
 
+# set window positions (leave swap mode)
 swap < escape; default
+swap < return; default
 
 # focus window
 shift + cmd + alt + ctrl - h : yabai -m window --focus west \
@@ -92,75 +90,26 @@ shift + cmd + alt + ctrl - j : yabai -m window --focus south
 shift + cmd + alt + ctrl - k : yabai -m window --focus north
 
 # swap managed window
+#
+# Attempt to swap window to west position...
+# ...if swapping to west exits with error then move window to prev
+# display and focus that display so that windows seemlessly move
+# across horizontally across monitors.
 swap < h : yabai -m window --swap west \
-  || yabai -m space --display $($HOME/.yabai-get-display-index prev)
+  || {\
+      yabai -m window --display $($HOME/.yabai-get-display-index prev); \
+      yabai -m display --focus $($HOME/.yabai-get-display-index prev); \
+     }
+
+# Attempt to swap window to east position...
+# ...if swapping to east exits with error then move window to next
+# display and focus that display so that windows seemlessly move
+# across horizontally across monitors.
 swap < l : yabai -m window --swap east \
-  || yabai -m space --display $($HOME/.yabai-get-display-index next)
+  || {\
+      yabai -m window --display $($HOME/.yabai-get-display-index next); \
+      yabai -m display --focus $($HOME/.yabai-get-display-index next); \
+     }
+
 swap < j : yabai -m window --swap south
 swap < k : yabai -m window --swap north
-# shift + alt - h : yabai -m window --swap north
-
-# move managed window
-# shift + cmd - h : yabai -m window --warp east
-
-# balance size of windows
-# shift + alt - 0 : yabai -m space --balance
-
-# make floating window fill screen
-# shift + alt - up     : yabai -m window --grid 1:1:0:0:1:1
-
-# make floating window fill left-half of screen
-# shift + alt - left   : yabai -m window --grid 1:2:0:0:1:1
-
-# create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
-# shift + cmd - n : yabai -m space --create && \
-#                   index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
-#                   yabai -m window --space "${index}" && \
-#                   yabai -m space --focus "${index}"
-
-# fast focus desktop
-# cmd + alt - x : yabai -m space --focus recent
-# cmd + alt - 1 : yabai -m space --focus 1
-
-# send window to desktop and follow focus
-# shift + cmd - z : yabai -m window --space next; yabai -m space --focus next
-# shift + cmd - 2 : yabai -m window --space  2; yabai -m space --focus 2
-
-# focus monitor
-# ctrl + alt - z  : yabai -m display --focus prev
-# ctrl + alt - 3  : yabai -m display --focus 3
-
-# send window to monitor and follow focus
-# ctrl + cmd - c  : yabai -m window --display next; yabai -m display --focus next
-# ctrl + cmd - 1  : yabai -m window --display 1; yabai -m display --focus 1
-
-# move floating window
-# shift + ctrl - a : yabai -m window --move rel:-20:0
-# shift + ctrl - s : yabai -m window --move rel:0:20
-
-# increase window size
-# shift + alt - a : yabai -m window --resize left:-20:0
-# shift + alt - w : yabai -m window --resize top:0:-20
-
-# decrease window size
-# shift + cmd - s : yabai -m window --resize bottom:0:-20
-# shift + cmd - w : yabai -m window --resize top:0:20
-
-# set insertion point in focused container
-# ctrl + alt - h : yabai -m window --insert west
-
-# toggle window zoom
-# alt - d : yabai -m window --toggle zoom-parent
-# alt - f : yabai -m window --toggle zoom-fullscreen
-
-# toggle window split type
-# alt - e : yabai -m window --toggle split
-
-# float / unfloat window and center on screen
-# alt - t : yabai -m window --toggle float;\
-#           yabai -m window --grid 4:4:1:1:2:2
-
-# toggle sticky(+float), topmost, picture-in-picture
-# alt - p : yabai -m window --toggle sticky;\
-#           yabai -m window --toggle topmost;\
-#           yabai -m window --toggle pip
