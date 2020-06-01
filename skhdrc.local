@@ -70,7 +70,7 @@
 #
 #               an EOL character signifies the end of the bind.
 #
-:: default : yabai -m config top_padding 5 && yabai -m config bottom_padding 5 && yabai -m config left_padding 5 && yabai -m config right_padding 5 && yabai -m config window_gap 5
+:: default : yabai -m config top_padding 10 && yabai -m config bottom_padding 10 && yabai -m config left_padding 10 && yabai -m config right_padding 10 && yabai -m config window_gap 10
 
 :: swap @ : yabai -m config top_padding    20 && yabai -m config bottom_padding 20 && yabai -m config left_padding   20 && yabai -m config right_padding  20 && yabai -m config window_gap     20
 
@@ -80,6 +80,8 @@ shift + cmd + alt + ctrl - g; swap
 # set window positions (leave swap mode)
 swap < escape; default
 swap < return; default
+
+shift + cmd + alt + ctrl - f : yabai -m window --toggle zoom-fullscreen
 
 # focus window
 shift + cmd + alt + ctrl - h : yabai -m window --focus west \
