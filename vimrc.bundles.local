@@ -4,7 +4,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'leafgarland/typescript-vim'
 Plug 'purescript-contrib/purescript-vim'
 Plug 'ElmCast/elm-vim'
-Plug 'begriffs/haskell-vim-now'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neovimhaskell/haskell-vim'
+Plug 'alx741/vim-hindent' " Optional
 
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'tpope/vim-surround'
@@ -13,6 +15,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'Yggdroot/indentLine'
 Plug 'Valloric/MatchTagAlways'
 Plug 'alvan/vim-closetag'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 " themes and other styles
 Plug 'haishanh/night-owl.vim'
@@ -23,6 +26,6 @@ Plug 'yantze/pt_black'
 
 " post install (yarn install | npm install) then load plugin only for editing
 " supported files
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+" Plug 'prettier/vim-prettier', {
+"   \ 'do': 'yarn install',
+"   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }

@@ -39,6 +39,7 @@ alias x110="tmux resize-pane -x 110"
 alias map-keys="xmodmap ~/dotfiles-local/.Xmodmap"
 # remove tap to click on linux
 alias remove-tap-click="synclient MaxTapTime=0"
+alias qa-backend="ssh -i ~/.ssh/simadmin.pem -p 6000 -L 9050:localhost:9050 simadmin@qa-portal"
 
 # run zsh in vi mode
 set -o vi
@@ -82,3 +83,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# add portal command for SimSpace PortalCLI
+# https://github.com/Simspace/ci/blob/dev/docs/PortalCLI.md
+eval $("$HOME/dev/ci/deploy/portal" env 2> /dev/null)

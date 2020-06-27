@@ -115,3 +115,6 @@ swap < l : yabai -m window --swap east \
 
 swap < j : yabai -m window --swap south
 swap < k : yabai -m window --swap north
+
+# toggle between vertical and horizontal split
+shift + cmd + alt + ctrl - o : yabai -m window --toggle split

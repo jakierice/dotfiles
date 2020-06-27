@@ -121,6 +121,8 @@ augroup ResizeCmdOnVimResized
   autocmd VimResized * call ResizeCmdHeight()
 augroup END
 
+highlight LineNr ctermfg=grey
+
 " auto close tags for HTML and JSX/TSX
 " filenames like *.xml, *.html, *.xhtml, ...
 " These are the file extensions where this plugin is enabled.
@@ -165,3 +167,34 @@ let g:closetag_close_shortcut = '<leader>>'
 
 autocmd BufNewFile,BufRead *.js set filetype=javascript.jsx
 autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+
+" Disbale ALE linting server from Thoughtbot dotfiles so that CoC can act as the
+" primary linting
+let g:ale_enabled = 0
+
+" " COC {{{  Language Server Protocal, completion,
+let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-eslint', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
+
+" set Pretter command for coc-prettier
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+"}}}
