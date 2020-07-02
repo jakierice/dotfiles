@@ -24,6 +24,9 @@ nmap 0 ^
 nmap k gk
 nmap j gj
 
+" map Ctrl-Shift-I to Prettier like VS Code
+nmap <C-S-i> :Prettier<CR>
+
 " set filetypes as typescript.tsx
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
