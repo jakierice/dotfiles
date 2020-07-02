@@ -1,0 +1,34 @@
+{
+  "suggest.echodocSupport": true,
+  "suggest.maxCompleteItemCount": 20,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "javascriptreact"
+  ],
+  "eslint.filetypes": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "javascriptreact"
+  ],
+  "diagnostic.errorSign": "•",
+  "diagnostic.warningSign": "•",
+  "diagnostic.infoSign": "•",
+  "tsserver.maxTsServerMemory": 8192,
+  "languageserver": {
+    "haskell": {
+      "command": "hie-wrapper",
+      "args": ["--lsp"],
+      "rootPatterns": ["stack.yaml", "cabal.config", "package.yaml"],
+      "filetypes": ["hs", "lhs", "haskell"],
+      "initializationOptions": {
+        "languageServerHaskell": {
+          "hlintOn": true
+        }
+      }
+    }
+  }
+}
