@@ -35,11 +35,15 @@ set termguicolors
 " colorscheme onedark
 " colorscheme pt_black
 colorscheme monokai
+" colorscheme night-owl
 
 hi CocErrorFloat ctermfg=White guifg=#000000
 
 " remove theme background to use terminal theme background color
 hi Normal guibg=NONE ctermbg=NONE
+hi SignColumn guibg=NONE ctermbg=NONE
+hi LineNr guibg=NONE ctermbg=NONE
+hi CursorLineNr guibg=NONE ctermbg=NONE
 " set ag (the silver surfer) as ack.vim search library
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
