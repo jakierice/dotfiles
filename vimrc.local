@@ -32,8 +32,11 @@ autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
 """"""""""""" Color Schemes  """"""""""""""""""
 set termguicolors
-colorscheme onedark
+" colorscheme onedark
 " colorscheme pt_black
+colorscheme monokai
+
+hi CocErrorFloat ctermfg=White guifg=#000000
 
 " remove theme background to use terminal theme background color
 hi Normal guibg=NONE ctermbg=NONE
@@ -200,4 +203,3 @@ function! s:show_documentation()
   endif
 endfunction
 
-"}}}

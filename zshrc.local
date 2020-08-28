@@ -27,7 +27,7 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # aliases
-alias zshconfig="vim ~/.zshrc"
+alias zshconfig="vim ~/dotfiles-local/zshrc.local"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias home="cd ~"
 alias y10="tmux resize-pane -y 10"
@@ -40,6 +40,8 @@ alias map-keys="xmodmap ~/dotfiles-local/.Xmodmap"
 # remove tap to click on linux
 alias remove-tap-click="synclient MaxTapTime=0"
 alias qa-backend="ssh -i ~/.ssh/simadmin.pem -p 6000 -L 9050:localhost:9050 simadmin@qa-portal"
+alias azul="~/dev/azul"
+alias azul-load-dev="~/dev/azul load -p create delete edit view approve deny"
 
 # run zsh in vi mode
 set -o vi

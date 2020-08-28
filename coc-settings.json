@@ -1,4 +1,7 @@
 {
+  "git.addGBlameToBufferVar": true,
+  "git.addGBlameToVirtualText": true,
+  "git.virtualTextPrefix": " ❯❯❯ ",
   "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 20,
   "coc.preferences.formatOnSaveFiletypes": [

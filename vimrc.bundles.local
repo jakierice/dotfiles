@@ -23,6 +23,7 @@ Plug 'haishanh/night-owl.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'yantze/pt_black'
+Plug 'crusoexia/vim-monokai'
 
 
 " post install (yarn install | npm install) then load plugin only for editing
