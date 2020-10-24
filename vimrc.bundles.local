@@ -1,7 +1,7 @@
 Plug 'MaxMEllon/vim-jsx-pretty'
 " git tools like Gblame and Gbrowse https://github.com/tpope/vim-fugitive
 Plug 'tpope/vim-fugitive'
-Plug 'leafgarland/typescript-vim'
+Plug 'ianks/vim-tsx'
 Plug 'purescript-contrib/purescript-vim'
 Plug 'ElmCast/elm-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -12,22 +12,10 @@ Plug 'reasonml-editor/vim-reason-plus'
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'tpope/vim-surround'
 Plug 'mileszs/ack.vim'
-Plug 'jiangmiao/auto-pairs'
 Plug 'Yggdroot/indentLine'
-Plug 'Valloric/MatchTagAlways'
-Plug 'alvan/vim-closetag'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 " themes and other styles
-Plug 'haishanh/night-owl.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'yantze/pt_black'
 Plug 'crusoexia/vim-monokai'
-
-
-" post install (yarn install | npm install) then load plugin only for editing
-" supported files
-" Plug 'prettier/vim-prettier', {
-"   \ 'do': 'yarn install',
-"   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }

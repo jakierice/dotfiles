@@ -3,13 +3,16 @@
   "git.addGBlameToVirtualText": true,
   "git.virtualTextPrefix": " ❯❯❯ ",
   "suggest.echodocSupport": true,
-  "suggest.maxCompleteItemCount": 20,
+  "suggest.maxCompleteItemCount": 30,
+  "suggest.noselect": false,
+  "prettier.disableSuccessMessage": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "typescript",
     "typescriptreact",
     "json",
-    "javascriptreact"
+    "javascriptreact",
+    "rust"
   ],
   "eslint.filetypes": [
     "javascript",
@@ -17,9 +20,10 @@
     "typescriptreact",
     "javascriptreact"
   ],
-  "diagnostic.errorSign": "•",
-  "diagnostic.warningSign": "•",
-  "diagnostic.infoSign": "•",
+  "eslint.autoFixOnSave": true,
+  "diagnostic.errorSign": "x",
+  "diagnostic.warningSign": "!",
+  "diagnostic.infoSign": "i",
   "tsserver.maxTsServerMemory": 8192,
   "languageserver": {
     "haskell": {
