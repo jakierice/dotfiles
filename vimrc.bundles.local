@@ -8,6 +8,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovimhaskell/haskell-vim'
 Plug 'alx741/vim-hindent' " Optional
 Plug 'reasonml-editor/vim-reason-plus'
+Plug 'kristijanhusak/vim-carbon-now-sh'
 
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'tpope/vim-surround'

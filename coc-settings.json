@@ -6,6 +6,7 @@
   "suggest.maxCompleteItemCount": 30,
   "suggest.noselect": false,
   "prettier.disableSuccessMessage": true,
+  "prettier.semi": false,
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "typescript",
