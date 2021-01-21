@@ -7,6 +7,11 @@ imap jk <Esc>
 vmap kj <Esc>
 vmap jk <Esc>
 
+" Search mappings: These will make it so that going to the next one in a
+" search will center on the line it's found in.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
 " override thoughtbot's 80 column width marker
 set colorcolumn=
 
@@ -22,7 +27,7 @@ nmap j gj
 
 " map Ctrl-Shift-I to Prettier like VS Code
 nmap <C-i> :Prettier<CR>
-nmap <C-y> :CocCommand eslint.executeAutofix<CR>
+nmap <C-m> :CocCommand eslint.executeAutofix<CR>
 
 " set filetypes as typescript.tsx
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
@@ -162,3 +167,8 @@ function! s:show_documentation()
   endif
 endfunction
 
+set re=0
+
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+  \,sm:block-blinkwait175-blinkoff150-blinkon175

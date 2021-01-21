@@ -1,7 +1,7 @@
 Plug 'MaxMEllon/vim-jsx-pretty'
 " git tools like Gblame and Gbrowse https://github.com/tpope/vim-fugitive
 Plug 'tpope/vim-fugitive'
-Plug 'ianks/vim-tsx'
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'purescript-contrib/purescript-vim'
 Plug 'ElmCast/elm-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}

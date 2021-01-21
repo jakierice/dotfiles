@@ -17,9 +17,9 @@
   ],
   "eslint.filetypes": [
     "javascript",
+    "javascriptreact",
     "typescript",
-    "typescriptreact",
-    "javascriptreact"
+    "typescriptreact"
   ],
   "eslint.autoFixOnSave": true,
   "diagnostic.errorSign": "x",
