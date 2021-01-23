@@ -70,7 +70,7 @@ zle -N zle-keymap-select
 zle -N zle-line-init
 
 # start z fuzzy finder on zsh load
-. ~/dotfiles-local/z.sh
+. ~/dotfiles/z.sh
 
 # NPM configuration for global package user permissions
 # Solution found here:
