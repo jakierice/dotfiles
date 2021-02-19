@@ -64,6 +64,23 @@
                 "type": "basic"
               }
             ]
+          },
+          {
+            "manipulators": [
+              {
+                "description": "left_command+tab to mouse button6",
+                "from": {
+                  "key_code": "tab",
+                  "modifiers": ["left_command"]
+                },
+                "to": [
+                  {
+                    "pointing_button": "button6"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
           }
         ]
       },
@@ -239,4 +256,3 @@
     }
   ]
 }
-

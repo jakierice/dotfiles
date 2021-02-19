@@ -38,9 +38,6 @@ alias x75="tmux resize-pane -x 75"
 alias x100="tmux resize-pane -x 100"
 alias x200="tmux resize-pane -x 200"
 # assign custom key mappings for linux
-alias map-keys="xmodmap ~/dotfiles-local/.Xmodmap"
-# remove tap to click on linux
-alias remove-tap-click="synclient MaxTapTime=0"
 alias qa-backend="ssh -i ~/.ssh/simadmin.pem -p 6000 -L 9050:localhost:9050 simadmin@qa-portal"
 alias azul="~/dev/azul"
 alias azul-load-dev="~/dev/azul load -p create delete edit view approve deny"
@@ -76,8 +73,9 @@ zle -N zle-line-init
 # Solution found here:
 # https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md
 NPM_PACKAGES="${HOME}/.npm-packages"
+LOCAL_BIN="${HOME}/.local/bin"
 
-export PATH="$PATH:$NPM_PACKAGES/bin"
+export PATH="$PATH:$NPM_PACKAGES/bin:$LOCAL_BIN"
 
 # Preserve MANPATH if you already defined it somewhere in your config.
 # Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
@@ -87,6 +85,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# add portal-suite directory location for gabe
+export PORTAL_SUITE_DIR="$HOME/dev/portal-suite"
 # add portal command for SimSpace PortalCLI
 # https://github.com/Simspace/ci/blob/dev/docs/PortalCLI.md
 eval $("$HOME/dev/ci/deploy/portal" env 2> /dev/null)

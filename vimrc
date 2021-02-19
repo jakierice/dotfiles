@@ -1,4 +1,15 @@
 """""""""""""""""""""PLUGINS""""""""""""""""""""""""""""
+" Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
+
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
@@ -11,10 +22,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'jremmen/vim-ripgrep'
+Plug 'leafgarland/typescript-vim'
 
 " Language support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'HerringtonDarkholme/yats.vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'Yggdroot/indentLine'
@@ -30,6 +41,12 @@ Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 """"""""""""""""""""KEY MAPPING"""""""""""""""""""""""""
+" Leader
+let mapleader = " "
+
+" Switch between the last two files
+nnoremap <Leader><Leader> <C-^>
+
 " quick `roll` ESC
 imap kj <Esc>
 imap jk <Esc>
@@ -51,12 +68,32 @@ nmap 0 ^
 nmap k gk
 nmap j gj
 
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in fzf for listing files. Lightning fast and respects .gitignore
+  let $FZF_DEFAULT_COMMAND = 'ag --literal --files-with-matches --nocolor --hidden -g ""'
+
+  if !exists(":Ag")
+    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+    nnoremap \ :Ag<SPACE>
+  endif
+endif
+
 " Map Ctrl + p to open fuzzy find (FZF)
 nnoremap <c-p> :Files<cr>
 
 " map Ctrl-Shift-I to Prettier like VS Code
 nmap <C-i> :Prettier<CR>
 nmap <C-m> :CocCommand eslint.executeAutofix<CR>
+
+" Softtabs, 2 spaces
+set tabstop=2
+set shiftwidth=2
+set shiftround
+set expandtab
 
 " Tab completion
 " will insert tab at beginning of line,
