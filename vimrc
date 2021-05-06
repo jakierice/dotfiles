@@ -1,15 +1,15 @@
 """""""""""""""""""""PLUGINS""""""""""""""""""""""""""""
+set noswapfile
 " Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-endif
+	  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+	      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  endif
 
-" Run PlugInstall if there are missing plugins
-autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \| PlugInstall --sync | source $MYVIMRC
-\| endif
-
+  " Run PlugInstall if there are missing plugins
+  autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+    \| PlugInstall --sync | source $MYVIMRC
+    \| endif
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
@@ -36,6 +36,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'crusoexia/vim-monokai'
 Plug 'ryanoasis/vim-devicons'
+Plug 'aloussase/cyberpunk'
 
 " Initialize plugin system
 call plug#end()
@@ -59,6 +60,7 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 
 " line number relative to current cursor position
+set number
 set relativenumber
 
 " jump to beginning of line text instead of actual line begin
@@ -90,6 +92,21 @@ nmap <C-i> :Prettier<CR>
 nmap <C-m> :CocCommand eslint.executeAutofix<CR>
 
 " Softtabs, 2 spaces
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  "" Use ag in fzf for listing files. Lightning fast and respects
+  " .gitignore
+  let $FZF_DEFAULT_COMMAND = 'ag --literal --files-with-matches --nocolor --hidden -g ""'
+
+  if !exists(":Ag")
+    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+    nnoremap \ :Ag<SPACE>
+  endif
+endif
+
 set tabstop=2
 set shiftwidth=2
 set shiftround
