@@ -90,3 +90,6 @@ export PORTAL_SUITE_DIR="$HOME/dev/portal-suite"
 # add portal command for SimSpace PortalCLI
 # https://github.com/Simspace/ci/blob/dev/docs/PortalCLI.md
 eval $("$HOME/dev/ci/deploy/portal" env 2> /dev/null)
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"

@@ -7,19 +7,15 @@
   "suggest.noselect": false,
   "prettier.disableSuccessMessage": true,
   "prettier.semi": false,
+  "prettier.trailingComma": "all",
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "typescript",
     "typescriptreact",
     "json",
     "javascriptreact",
-    "rust"
-  ],
-  "eslint.filetypes": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
+    "rust",
+    "lua"
   ],
   "eslint.autoFixOnSave": true,
   "diagnostic.errorSign": "x",
