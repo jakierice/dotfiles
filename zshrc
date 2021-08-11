@@ -77,7 +77,7 @@ zle -N zle-line-init
 # https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md
 NPM_PACKAGES="${HOME}/.npm-packages"
 
-export PATH="$PATH:$NPM_PACKAGES/bin"
+PATH="$PATH:$NPM_PACKAGES/bin:${HOME}/dev/ci/portal"
 
 # Preserve MANPATH if you already defined it somewhere in your config.
 # Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
@@ -86,7 +86,3 @@ export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# add portal command for SimSpace PortalCLI
-# https://github.com/Simspace/ci/blob/dev/docs/PortalCLI.md
-eval $("$HOME/dev/ci/deploy/portal" env 2> /dev/null)

@@ -8,31 +8,24 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
-Plug 'jremmen/vim-ripgrep'
+
+" TypeScript/.tsx support
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 
 " Language support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'JamshedVesuna/vim-markdown-preview'
-Plug 'Yggdroot/indentLine'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-
-" Themes and other styles
-Plug 'joshdick/onedark.vim'
-Plug 'itchyny/lightline.vim'
-Plug 'crusoexia/vim-monokai'
-Plug 'ryanoasis/vim-devicons'
 
 " Initialize plugin system
 call plug#end()
 
 """"""""""""""""""""KEY MAPPING"""""""""""""""""""""""""
 " quick `roll` ESC
-imap kj <Esc>
-imap jk <Esc>
+inoremap jk <Esc>
+inoremap jj <Esc>
+inoremap kj <Esc>
+inoremap kk <Esc>
 vmap kj <Esc>
 vmap jk <Esc>
 
@@ -42,7 +35,10 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 
 " line number relative to current cursor position
+set number
 set relativenumber
+
+set noswapfile
 
 " jump to beginning of line text instead of actual line begin
 nmap 0 ^
@@ -73,24 +69,13 @@ endfunction
 inoremap <Tab> <C-r>=InsertTabWrapper()<CR>
 inoremap <S-Tab> <C-n>
 
+nnoremap <SPACE> <Nop>
+let mapleader=" "
 " Switch between the last two files
 nnoremap <Leader><Leader> <C-^>
 
-" Get off my lawn
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
-
 " set filetypes as typescript.tsx
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
-
-""""""""""""" Color Schemes  """"""""""""""""""
-set termguicolors
-" colorscheme onedark
-" colorscheme pt_black
-colorscheme monokai
-" colorscheme night-owl
 
 set encoding=UTF-8
 
@@ -115,18 +100,6 @@ if executable('ag')
     nnoremap \ :Ag<SPACE>
   endif
 endif
-
-" markdown preview hotkey
-let vim_markdown_preview_hotkey='<C-q>'
-" default chrome for markdown preview
-let vim_markdown_preview_browser='Google Chrome'
-" use grip for GitHub style markdown preview
-let vim_markdown_preview_github=1
-
-" sets each level of indentation to different line type
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-
-"""""""" Vim lightline   """""
 
 augroup ResizeCmdOnVimResized
   autocmd!
@@ -164,8 +137,3 @@ function! s:show_documentation()
 endfunction
 
 set re=0
-
-set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
-  \,sm:block-blinkwait175-blinkoff150-blinkon175
-
