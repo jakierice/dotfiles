@@ -30,6 +30,11 @@ vim.api.nvim_set_keymap('i', 'jj', '<Esc>', { noremap = true })
 vim.api.nvim_set_keymap('i', 'kk', '<Esc>', { noremap = true })
 vim.api.nvim_set_keymap('i', 'kj', '<Esc>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader><Leader>', '<C-^', { noremap = true })
+-- jump to beginning of line text instead of actual line begin
+vim.api.nvim_set_keymap('n', '0', '^', {})
+-- move down/up single line if line is wrapped
+vim.api.nvim_set_keymap('n', 'k', 'gk', {})
+vim.api.nvim_set_keymap('n', 'j', 'gj', {})
 
 -- Telescope fuzzy finder config
 vim.api.nvim_set_keymap('n', '<c-p>', '<Cmd>Telescope find_files<cr>', { noremap = true })
@@ -51,14 +56,13 @@ local on_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', '<C-i>', [[lua vim.lsp.buf.formatting_seq_sync()]], opts)
   buf_set_keymap('n', 'K', [[<Cmd>lua require('lspsaga.hover').render_hover_doc()<CR>]], { noremap = true })
   buf_set_keymap('n', 'KK', [[<Cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>]], { noremap = true })
--- nnoremap <silent> [g :Lspsaga diagnostic_jump_previous<CR>
--- nnoremap <silent> ]g :Lspsaga diagnostic_jump_next<CR>
   buf_set_keymap('n', '[g', [[<Cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>]], { noremap = true })
   buf_set_keymap('n', ']g', [[<Cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>]], { noremap = true })
   buf_set_keymap('n', '"', [[<Cmd>lua require'lspsaga.diagnostic'.show_cursor_diagnostics()<CR>]], { noremap = true })
+  buf_set_keymap('n', '<C-i>', [[<Cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>]], {noremap = true})
+  buf_set_keymap('n', '<C-m>', [[<Cmd>:!eslint_d --fix %<CR>]], {noremap = true})
 
    if client.resolved_capabilities.document_formatting then
     vim.api.nvim_command [[augroup Format]]
@@ -119,7 +123,7 @@ nvim_lsp.diagnosticls.setup {
       eslint_d = {
         command = 'eslint_d',
         args = { '--stdin', '--stdin-filename', '%filename', '--fix-to-stdout' },
-        rootPatterns = { '.git' },
+        rootPatterns = { 'package.json' },
       },
       prettier = {
         command = 'prettier',
@@ -133,8 +137,8 @@ nvim_lsp.diagnosticls.setup {
       json = 'prettier',
       scss = 'prettier',
       less = 'prettier',
-      typescript = 'eslint_d',
-      typescriptreact = 'eslint_d',
+      typescript = 'prettier',
+      typescriptreact = 'prettier',
       json = 'prettier',
       markdown = 'prettier',
     }
