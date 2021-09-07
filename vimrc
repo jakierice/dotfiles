@@ -5,17 +5,15 @@
 call plug#begin('~/.vim/plugged')
 
 " Vim tools
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 
-" TypeScript/.tsx support
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-
-" Language support
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" LSP config support (needed for Neovim 0.5.0 goodness)
+Plug 'neovim/nvim-lspconfig'
+" LSP UI supprt (hover windows and such)
+Plug 'glepnir/lspsaga.nvim'
+" Treesitter for tree based syntax parsing (better than regex)
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Initialize plugin system
 call plug#end()
@@ -111,29 +109,14 @@ highlight LineNr ctermfg=grey
 autocmd BufNewFile,BufRead *.js set filetype=javascript.jsx
 autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 
-" " COC Language Server Protocal, completion,
-let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-tsserver', 'coc-eslint', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier', 'coc-pairs']
-
-" set Pretter command for coc-prettier
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
+" show hover doc
+nnoremap <silent>K :Lspsaga hover_doc<CR>
+" show TS signature
+inoremap <silent> <C-k> <Cmd>Lspsaga signature_help<CR>
+" find the cursor word definition and reference
+nnoremap <silent> gh <Cmd>Lspsaga lsp_finder<CR>
+" go to next diagnostic found
+nnoremap <silent> [g :Lspsaga diagnostic_jump_previous<CR>
+nnoremap <silent> ]g :Lspsaga diagnostic_jump_next<CR>
 
 set re=0
