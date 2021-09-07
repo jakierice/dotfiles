@@ -15,12 +15,9 @@
     "javascriptreact",
     "rust"
   ],
-  "eslint.filetypes": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
+  "eslint.options": {
+    "cache": true
+  },
   "eslint.autoFixOnSave": true,
   "diagnostic.errorSign": "x",
   "diagnostic.warningSign": "!",
