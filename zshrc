@@ -78,6 +78,7 @@ zle -N zle-line-init
 NPM_PACKAGES="${HOME}/.npm-packages"
 
 PATH="$PATH:$NPM_PACKAGES/bin:${HOME}/dev/ci/portal"
+export GPG_TTY=$(tty)
 
 # Preserve MANPATH if you already defined it somewhere in your config.
 # Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
