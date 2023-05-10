@@ -9,6 +9,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
+Plug 'jiangmiao/auto-pairs'
 
 " TypeScript/.tsx support
 Plug 'leafgarland/typescript-vim'
